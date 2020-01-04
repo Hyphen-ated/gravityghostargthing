@@ -15,20 +15,24 @@ for i in range(139):
     fline = fools[i].rstrip('\n\r')
     for ci in range(160):
         ac = aline[ci] if ci < len(aline) else "X"
-        fc = fline[ci] if ci < len(fline) else "X"
-        awrite = ac
+        fc = fline[ci] if ci < len(fline) else "X"        
+
+        awrite = ac 
         fwrite = fc
         if ac != fc:          
             awrite = "<span>" + ac + "</span>"
             fwrite = "<span>" + fc + "</span>"
-        if awrite != "X":
+        if ac != "X":
             aout += awrite
-        if fwrite != "X":
+        if fc != "X":
             fout += fwrite
 
         
     aout += "<br>"
     fout += "<br>"
+
+aout = aout.replace(" ", "&nbsp;")
+fout = fout.replace(" ", "&nbsp;")
 
 outf.write("""
 <html>
